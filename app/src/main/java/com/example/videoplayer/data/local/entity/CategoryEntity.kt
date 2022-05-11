@@ -11,11 +11,4 @@ data class CategoryEntity(
     @PrimaryKey(autoGenerate = true)
     val categoryId: Long? = null,
     val name: String,
-    val videos: List<VideoEntity>
-) {
-    fun toCategory(): Category =
-        Category(
-            name = name,
-            videos = videos.map { it.toVideo() }
-        )
-}
+)
