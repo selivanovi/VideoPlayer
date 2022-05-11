@@ -14,7 +14,7 @@ class VideoRepositoryImpl(
     private val dao: VideoDao
 ) : VideoRepository {
 
-    override suspend fun getCategories(): Flow<List<Category>> = flow {
+    override fun getCategories(): Flow<List<Category>> = flow {
         val localCategories = dao.getCategoriesWithMovie().map { categoryAndVideos ->
             categoryAndVideos.toCategory()
         }

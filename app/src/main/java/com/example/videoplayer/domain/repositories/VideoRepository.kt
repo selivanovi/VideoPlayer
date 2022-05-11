@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface VideoRepository {
 
-    suspend fun getCategories(): Flow<List<Category>>
+    fun getCategories(): Flow<List<Category>>
 }
