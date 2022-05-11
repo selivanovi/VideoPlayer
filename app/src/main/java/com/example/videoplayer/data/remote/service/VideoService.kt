@@ -6,7 +6,7 @@ import retrofit2.http.GET
 interface VideoService {
 
     @GET("/videos")
-    suspend fun getVideos(): List<CategoryDto>
+    suspend fun getCategories(): List<CategoryDto>
 
     companion object {
         const val BASE_URL = "https://raw.githubusercontent.com/DavidStdn/NitrixTestTask/main/"

@@ -29,7 +29,7 @@ interface VideoDao {
 
     @Transaction
     @Query("SELECT * FROM categoryentity")
-    fun getCategoriesWithMovie(): Flow<List<CategoryAndVideos>>
+    fun getCategoriesWithMovie(): List<CategoryAndVideos>
 
     @Delete
     fun deleteCategory(category: CategoryEntity)
