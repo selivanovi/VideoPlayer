@@ -20,6 +20,15 @@ class VideoRepositoryImpl(
         }
         emit(localCategories)
 
+        refreshData()
+
+        val mewLocalCategories = dao.getCategoriesWithMovie().map { categoryAndVideos ->
+            categoryAndVideos.toCategory()
+        }
+        emit(mewLocalCategories)
+    }
+
+    private suspend fun refreshData() {
         val networkCategories = networkService.getCategories()
         if (networkCategories.isNotEmpty()) {
             val categories = mutableListOf<CategoryEntity>()
@@ -38,11 +47,6 @@ class VideoRepositoryImpl(
 
             dao.updateCategoriesAndVideos(categories, videos)
         }
-
-        val mewLocalCategories = dao.getCategoriesWithMovie().map { categoryAndVideos ->
-            categoryAndVideos.toCategory()
-        }
-        emit(mewLocalCategories)
     }
 
 }
