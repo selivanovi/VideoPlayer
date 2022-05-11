@@ -7,7 +7,7 @@ data class CategoryAndVideos(
     @Embedded val category: CategoryEntity,
     @Relation(
         parentColumn = "categoryId",
-        entityColumn = "videoId"
+        entityColumn = "categoryId"
     )
     val videos: List<VideoEntity>
 )
