@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface VideoRepository {
 
-    fun getCategories(): Flow<List<Category>>
+    fun getCategories(): Flow<Result<List<Category>>>
 }

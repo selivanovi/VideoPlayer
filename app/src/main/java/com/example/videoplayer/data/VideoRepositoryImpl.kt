@@ -8,26 +8,32 @@ import com.example.videoplayer.domain.model.Category
 import com.example.videoplayer.domain.repositories.VideoRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import java.lang.Exception
 
 class VideoRepositoryImpl(
     private val networkService: VideoService,
     private val dao: VideoDao
 ) : VideoRepository {
 
-    override fun getCategories(): Flow<List<Category>> = flow {
+    override fun getCategories(): Flow<Result<List<Category>>> = flow {
 
         val localCategories = dao.getCategoriesWithMovie().map { categoryAndVideos ->
             categoryAndVideos.toCategory()
         }
 
-        emit(localCategories)
+        emit(Result.success(localCategories))
 
-        refreshData()
+        try {
+            refreshData()
+        } catch (e: Exception) {
+            emit(Result.failure(e))
+            return@flow
+        }
 
-        val mewLocalCategories = dao.getCategoriesWithMovie().map { categoryAndVideos ->
+        val newLocalCategories = dao.getCategoriesWithMovie().map { categoryAndVideos ->
             categoryAndVideos.toCategory()
         }
-        emit(mewLocalCategories)
+        emit(Result.success(newLocalCategories))
     }
 
     private suspend fun refreshData() {
