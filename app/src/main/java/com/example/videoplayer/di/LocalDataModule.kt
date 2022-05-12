@@ -3,7 +3,6 @@ package com.example.videoplayer.di
 import android.content.Context
 import androidx.room.Room
 import com.example.videoplayer.data.local.VideoDatabase
-import com.example.videoplayer.data.local.dao.VideoDao
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

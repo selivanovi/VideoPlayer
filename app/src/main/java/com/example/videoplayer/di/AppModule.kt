@@ -2,7 +2,6 @@ package com.example.videoplayer.di
 
 import com.example.videoplayer.data.VideoRepositoryImpl
 import com.example.videoplayer.data.local.VideoDatabase
-import com.example.videoplayer.data.local.dao.VideoDao
 import com.example.videoplayer.data.remote.service.VideoService
 import dagger.Module
 import dagger.Provides

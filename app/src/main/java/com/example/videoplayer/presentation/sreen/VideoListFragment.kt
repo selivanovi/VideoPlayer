@@ -5,10 +5,8 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.videoplayer.databinding.FragmentVideoListBinding
-import com.example.videoplayer.di.MainApp
 import com.example.videoplayer.presentation.BaseFragment
 import com.example.videoplayer.presentation.adapter.VideoListAdapter
 import com.example.videoplayer.presentation.viewmodel.VideoListViewModel

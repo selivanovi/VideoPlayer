@@ -14,7 +14,7 @@ data class VideoEntity(
     val thumb: String,
     val title: String
 ) {
-    fun toVideo() : Video =
+    fun toVideo(): Video =
         Video(
             description = description,
             sources = sources,

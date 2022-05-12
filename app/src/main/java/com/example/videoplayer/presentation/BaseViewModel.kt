@@ -21,7 +21,7 @@ abstract class BaseViewModel : ViewModel(), CoroutineScope {
     }
 
     override val coroutineContext: CoroutineContext =
-        viewModelScope.coroutineContext + Dispatchers.IO +coroutineExceptionHandler
+        viewModelScope.coroutineContext + Dispatchers.IO + coroutineExceptionHandler
 
 
     @CallSuper

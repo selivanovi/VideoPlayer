@@ -1,7 +1,6 @@
 package com.example.videoplayer.data.remote.service
 
 import com.example.videoplayer.data.remote.dto.CategoriesDto
-import com.example.videoplayer.data.remote.dto.CategoryDto
 import retrofit2.http.GET
 
 interface VideoService {

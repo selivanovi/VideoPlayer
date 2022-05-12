@@ -1,6 +1,5 @@
 package com.example.videoplayer.data
 
-import android.util.Log
 import com.example.videoplayer.data.local.dao.VideoDao
 import com.example.videoplayer.data.local.entity.CategoryEntity
 import com.example.videoplayer.data.local.entity.VideoEntity
@@ -16,10 +15,11 @@ class VideoRepositoryImpl(
 ) : VideoRepository {
 
     override fun getCategories(): Flow<List<Category>> = flow {
+
         val localCategories = dao.getCategoriesWithMovie().map { categoryAndVideos ->
             categoryAndVideos.toCategory()
         }
-        Log.d("VideoRepository old:", localCategories.toString())
+
         emit(localCategories)
 
         refreshData()
@@ -27,7 +27,6 @@ class VideoRepositoryImpl(
         val mewLocalCategories = dao.getCategoriesWithMovie().map { categoryAndVideos ->
             categoryAndVideos.toCategory()
         }
-        Log.d("VideoRepository new: ", mewLocalCategories.toString())
         emit(mewLocalCategories)
     }
 

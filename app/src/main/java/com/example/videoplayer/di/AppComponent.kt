@@ -1,9 +1,6 @@
 package com.example.videoplayer.di
 
 import android.content.Context
-import androidx.fragment.app.Fragment
-import com.example.videoplayer.presentation.BaseFragment
-import com.example.videoplayer.presentation.MainActivity
 import com.example.videoplayer.presentation.sreen.VideoListFragment
 import dagger.BindsInstance
 import dagger.Component
