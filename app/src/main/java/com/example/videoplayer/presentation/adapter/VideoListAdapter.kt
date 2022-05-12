@@ -1,9 +1,12 @@
 package com.example.videoplayer.presentation.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.videoplayer.R
 import com.example.videoplayer.databinding.ListHeaderBinding
 import com.example.videoplayer.databinding.ListItemBinding
 import com.example.videoplayer.domain.model.Category
@@ -64,8 +67,14 @@ class VideoListAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(video: Video) {
+            Log.d("Video adapter", video.toString())
             binding.videoTitle.text = video.title
-            Glide.with(itemView).load(video.thumb).into(binding.videoImage)
+            Glide.with(binding.root)
+                .asBitmap()
+                .load(video.thumb)
+                .centerCrop()
+                .placeholder(R.drawable.ic_baseline_image_search_24)
+                .into(binding.videoImage)
         }
     }
 
