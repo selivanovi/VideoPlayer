@@ -8,8 +8,9 @@ import com.example.videoplayer.domain.model.Category
 import com.example.videoplayer.domain.repositories.VideoRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class VideoRepositoryImpl(
+class VideoRepositoryImpl @Inject constructor(
     private val networkService: VideoService,
     private val dao: VideoDao
 ) : VideoRepository {
@@ -38,13 +39,11 @@ class VideoRepositoryImpl(
                 val categoryEntity = categoryDto.toCategoryEntity()
 
                 categories.add(categoryEntity)
-                categoryEntity.categoryId?.let { categoryId ->
-                    videos.addAll(
-                        categoryDto.videos.map { it.toVideoEntity(categoryId) }
-                    )
-                }
-            }
 
+                videos.addAll(
+                    categoryDto.videos.map { it.toVideoEntity(categoryEntity.categoryId) }
+                )
+            }
             dao.updateCategoriesAndVideos(categories, videos)
         }
     }

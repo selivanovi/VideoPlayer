@@ -6,8 +6,9 @@ import com.example.videoplayer.presentation.BaseViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
+import javax.inject.Inject
 
-class VideoListViewModel(
+class VideoListViewModel @Inject constructor(
     private val videoRepository: VideoRepository
 ) : BaseViewModel() {
 

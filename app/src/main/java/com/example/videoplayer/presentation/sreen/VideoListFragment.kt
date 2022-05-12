@@ -8,6 +8,7 @@ import com.example.videoplayer.databinding.FragmentVideoListBinding
 import com.example.videoplayer.presentation.BaseFragment
 import com.example.videoplayer.presentation.adapter.VideoListAdapter
 import com.example.videoplayer.presentation.viewmodel.VideoListViewModel
+import com.example.videoplayer.utils.appComponent
 import kotlinx.coroutines.flow.onEach
 
 
@@ -21,6 +22,7 @@ class VideoListFragment : BaseFragment<FragmentVideoListBinding, VideoListViewMo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         with(binding.videoRecyclerView) {
             adapter = videoListAdapter
             layoutManager =

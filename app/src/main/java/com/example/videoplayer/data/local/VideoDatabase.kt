@@ -1,6 +1,7 @@
 package com.example.videoplayer.data.local
 
 import androidx.room.Database
+import androidx.room.RoomDatabase
 import com.example.videoplayer.data.local.dao.VideoDao
 import com.example.videoplayer.data.local.entity.CategoryEntity
 import com.example.videoplayer.data.local.entity.VideoEntity
@@ -12,7 +13,7 @@ import com.example.videoplayer.data.local.entity.VideoEntity
     ],
     version = 1
 )
-abstract class VideoDatabase {
+abstract class VideoDatabase : RoomDatabase() {
 
     abstract val dao: VideoDao
 
