@@ -23,7 +23,7 @@ data class VideoDto(
     private fun convertThumbToUrl(): String {
         val videoUrl = sources.first()
         val lastIndex = videoUrl.lastIndexOf("/")
-        val url = videoUrl.substring(0..lastIndex + 1)
+        val url = videoUrl.substring(0..lastIndex)
         return url + thumb
     }
 }
