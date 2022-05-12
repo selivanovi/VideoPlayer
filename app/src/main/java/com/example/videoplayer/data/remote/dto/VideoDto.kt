@@ -16,7 +16,14 @@ data class VideoDto(
             description = description,
             sources = sources.first(),
             subtitle = subtitle,
-            thumb = thumb,
+            thumb = convertThumbToUrl(),
             title = title
         )
+
+    private fun convertThumbToUrl(): String {
+        val videoUrl = sources.first()
+        val lastIndex = videoUrl.lastIndexOf("/")
+        val url = videoUrl.substring(0..lastIndex + 1)
+        return url + thumb
+    }
 }

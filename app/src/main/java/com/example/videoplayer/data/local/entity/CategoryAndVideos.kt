@@ -14,6 +14,7 @@ data class CategoryAndVideos(
 ) {
     fun toCategory(): Category =
         Category(
+            categoryId = category.categoryId,
             name = category.name,
             videos = videos.map { it.toVideo() }
         )
