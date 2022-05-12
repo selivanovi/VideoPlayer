@@ -10,11 +10,11 @@ data class VideoDto(
     val thumb: String,
     val title: String
 ) {
-    fun toVideoEntity(categoryId: Long): VideoEntity =
+    fun toVideoEntity(category: String): VideoEntity =
         VideoEntity(
-            categoryId = categoryId,
-            description = description,
             sources = sources.first(),
+            categoryName = category,
+            description = description,
             subtitle = subtitle,
             thumb = convertThumbToUrl(),
             title = title

@@ -6,18 +6,16 @@ import com.example.videoplayer.domain.model.Video
 
 @Entity
 data class VideoEntity(
-    @PrimaryKey(autoGenerate = true)
-    val videoId: Long = 0,
-    val categoryId: Long,
-    val description: String,
+    @PrimaryKey
     val sources: String,
+    val categoryName: String,
+    val description: String,
     val subtitle: String,
     val thumb: String,
     val title: String
 ) {
     fun toVideo() : Video =
         Video(
-            videoId = videoId,
             description = description,
             sources = sources,
             subtitle = subtitle,

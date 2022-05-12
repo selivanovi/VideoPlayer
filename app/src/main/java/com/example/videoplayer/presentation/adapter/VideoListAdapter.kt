@@ -10,7 +10,7 @@ import com.example.videoplayer.domain.model.Category
 import com.example.videoplayer.domain.model.Video
 
 class VideoListAdapter(
-    private val onClickVideoListener: (videoId: Long) -> Unit
+    private val onClickVideoListener: (videoId: String) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val list = mutableListOf<Any>()
@@ -52,7 +52,7 @@ class VideoListAdapter(
             val video = list[position] as Video
             (holder as VideoViewHolder).bind(video)
             holder.itemView.setOnClickListener {
-                onClickVideoListener(video.videoId)
+                onClickVideoListener(video.sources)
             }
         }
     }

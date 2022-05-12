@@ -7,14 +7,13 @@ import com.example.videoplayer.domain.model.Category
 data class CategoryAndVideos(
     @Embedded val category: CategoryEntity,
     @Relation(
-        parentColumn = "categoryId",
-        entityColumn = "categoryId"
+        parentColumn = "name",
+        entityColumn = "categoryName"
     )
     val videos: List<VideoEntity>
 ) {
     fun toCategory(): Category =
         Category(
-            categoryId = category.categoryId,
             name = category.name,
             videos = videos.map { it.toVideo() }
         )

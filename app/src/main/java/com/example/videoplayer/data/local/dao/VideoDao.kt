@@ -16,34 +16,32 @@ import java.nio.charset.CharsetEncoder
 interface VideoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCategory(category: CategoryEntity)
+    suspend fun insertCategory(category: CategoryEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertVideo(video: VideoEntity)
+    suspend fun insertVideo(video: VideoEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCategories(categories: List<CategoryEntity>)
+    suspend fun insertCategories(categories: List<CategoryEntity>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertVideos(videos: List<VideoEntity>)
+    suspend fun insertVideos(videos: List<VideoEntity>)
 
     @Transaction
     @Query("SELECT * FROM categoryentity")
-    fun getCategoriesWithMovie(): List<CategoryAndVideos>
+    suspend fun getCategoriesWithMovie(): List<CategoryAndVideos>
 
-    @Delete
-    fun deleteCategory(category: CategoryEntity)
+    @Query("DELETE FROM categoryentity")
+    suspend fun deleteAllCategories()
 
-    @Delete
-    fun deleteCategories(category: List<CategoryEntity>)
 
-    @Delete
-    fun deleteVideos(videos: List<VideoEntity>)
+    @Query("DELETE FROM videoentity")
+    suspend fun deleteAllVideos()
 
     @Transaction
-    fun updateCategoriesAndVideos(categories: List<CategoryEntity>, videos: List<VideoEntity>) {
-        deleteCategories(categories)
-        deleteVideos(videos)
+    suspend fun updateCategoriesAndVideos(categories: List<CategoryEntity>, videos: List<VideoEntity>) {
+        deleteAllCategories()
+        deleteAllVideos()
         insertCategories(categories)
         insertVideos(videos)
     }

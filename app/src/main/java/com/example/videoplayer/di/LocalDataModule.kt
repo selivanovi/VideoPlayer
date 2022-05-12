@@ -13,11 +13,6 @@ class LocalDataModule {
 
     @Provides
     @Singleton
-    fun provideVideoDao(videoDatabase: VideoDatabase) : VideoDao =
-        videoDatabase.dao
-
-    @Provides
-    @Singleton
     fun provideVideoDatabase(context: Context): VideoDatabase =
         Room.databaseBuilder(
             context,

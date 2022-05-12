@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.videoplayer">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".di.MainApp"
         android:allowBackup="true"

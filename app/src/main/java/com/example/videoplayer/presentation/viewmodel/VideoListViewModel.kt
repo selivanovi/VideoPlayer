@@ -1,16 +1,25 @@
 package com.example.videoplayer.presentation.viewmodel
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.videoplayer.domain.model.Category
 import com.example.videoplayer.domain.repositories.VideoRepository
 import com.example.videoplayer.presentation.BaseViewModel
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.receiveAsFlow
 import javax.inject.Inject
 
-class VideoListViewModel @Inject constructor(
+class VideoListViewModel(
     private val videoRepository: VideoRepository
 ) : BaseViewModel() {
 
-    fun getCategories(): Flow<List<Category>>  = videoRepository.getCategories()
+    fun getCategories(): Flow<List<Category>> = videoRepository.getCategories()
+
+    @Suppress("UNCHECKED_CAST")
+    class Factory @Inject constructor(
+        private val videoRepository: VideoRepository
+    ) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            return VideoListViewModel(videoRepository) as T
+        }
+    }
 }
