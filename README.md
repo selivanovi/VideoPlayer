@@ -16,7 +16,7 @@ Was created by Ilya Selivanov for Nitrix
 
 | Task        | Feature         | Estimated time | Actual time |
 |:------------|:----------------|:---------------|:------------|
-| Home screen | Movie list      | 3 hour         | -           | 
-|             | Creating cache  | 4 hour         | -           |
-| Details     | Video Player    | 4 hour         | -           |
-| Research    |                 | 6 hour         | -           |
+| Home screen | Movie list      | 3 hour         | 6 hour      | 
+|             | Creating cache  | 4 hour         | 4 hour      |
+| Details     | Video Player    | 4 hour         | 7 hour      |
+| Research    |                 | 6 hour         | 10 hour     |
