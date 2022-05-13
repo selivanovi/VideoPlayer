@@ -26,7 +26,7 @@ class VideoListViewModel(
         launch {
             _channelOfState.send(VideoListState.Loading)
         }
-        videoRepository.getCategories().onEach { result ->
+        videoRepository.getCategoriesFlow().onEach { result ->
             result.onSuccess {  list ->
                 if (list.isNotEmpty()) {
                     _channelOfState.send(VideoListState.VideoListData(list))

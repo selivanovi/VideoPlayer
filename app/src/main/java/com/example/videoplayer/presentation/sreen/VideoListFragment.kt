@@ -6,6 +6,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.videoplayer.R
 import com.example.videoplayer.databinding.FragmentVideoListBinding
@@ -102,6 +103,9 @@ class VideoListFragment : BaseFragment<FragmentVideoListBinding, VideoListViewMo
     }
 
     private fun onRecyclerViewClickListener(videoId: String) {
-
+        findNavController().navigate(
+            R.id.action_videoListFragment_to_detailsFragment,
+            DetailsFragment.newInstance(videoId).arguments
+        )
     }
 }

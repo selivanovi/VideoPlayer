@@ -1,6 +1,7 @@
 package com.example.videoplayer.di
 
 import android.content.Context
+import com.example.videoplayer.presentation.sreen.DetailsFragment
 import com.example.videoplayer.presentation.sreen.VideoListFragment
 import dagger.BindsInstance
 import dagger.Component
@@ -18,6 +19,7 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(fragment: VideoListFragment)
+    fun inject(fragment: DetailsFragment)
 
     @Component.Builder
     interface Builder {
