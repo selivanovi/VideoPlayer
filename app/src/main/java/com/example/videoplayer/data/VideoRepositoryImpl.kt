@@ -15,7 +15,7 @@ class VideoRepositoryImpl(
     private val dao: VideoDao
 ) : VideoRepository {
 
-    override fun getCategories(): Flow<Result<List<Category>>> = flow {
+    override fun getCategoriesFlow(): Flow<Result<List<Category>>> = flow {
 
         val localCategories = dao.getCategoriesWithMovie().map { categoryAndVideos ->
             categoryAndVideos.toCategory()
@@ -35,6 +35,12 @@ class VideoRepositoryImpl(
         }
         emit(Result.success(newLocalCategories))
     }
+
+    override suspend fun getCategoriesList(): List<Category> =
+        dao.getCategoriesWithMovie().map { categoryAndVideos ->
+            categoryAndVideos.toCategory()
+        }
+
 
     private suspend fun refreshData() {
         val networkCategories = networkService.getCategories().categories
